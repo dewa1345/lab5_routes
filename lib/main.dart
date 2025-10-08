@@ -7,11 +7,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Navigation Lab',
-      initialRoute: '/login',
+      initialRoute: '/profile',
       routes: {
         '/login': (context) => LoginScreen(), 
         '/': (context) => HomeScreen(),
         '/details': (context) => DetailsScreen(),
+        '/profile': (context) => ProfileScreen(),
       },
     );
   }
@@ -73,6 +74,28 @@ class DetailsScreen extends StatelessWidget {
               child: Text('Back to Home'),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class ProfileScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final args = ModalRoute.of(context)!.settings.arguments as String?;
+    return Scaffold(
+      appBar: AppBar(title: Text('Profile Screen')),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pushNamed(
+              context,
+              '/details',
+              arguments: 'Wow, benar banget! kasmir memang tampan sekali',
+            );
+          },
+          child: Text('Open Profile'),
         ),
       ),
     );
