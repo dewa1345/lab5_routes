@@ -7,11 +7,29 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Navigation Lab',
-      initialRoute: '/',
+      initialRoute: '/login',
       routes: {
+        '/login': (context) => LoginScreen(), 
         '/': (context) => HomeScreen(),
         '/details': (context) => DetailsScreen(),
       },
+    );
+  }
+}
+
+class LoginScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Login Screen')),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pushReplacementNamed(context, '/');
+          },
+          child: Text('Login and Go Home'),
+        ),
+      ),
     );
   }
 }
